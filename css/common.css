@@ -48,3 +48,27 @@ a:hover {
     color: #fff;
     border:  1px solid #7a7a7aff;
 }
+
+.status-label-python {
+    background-color: #3572A5;
+    color: #fff;
+    border:  1px solid #3572A5ff;
+}
+
+.status-label-cpp {
+    background-color: #f34b7d;
+    color: #fff;
+    border:  1px solid #f34b7dff;
+}
+
+.status-label-html {
+    background-color: #e34c26;
+    color: #fff;
+    border:  1px solid #e34c26ff;
+}
+
+.status-label-css {
+    background-color: #563d7c;
+    color: #fff;
+    border:  1px solid #563d7cff;
+}
