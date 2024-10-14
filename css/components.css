@@ -10,169 +10,157 @@ a:hover {
 
 /* || Typography */
 body {
-    font-family: Optimistic Display, -apple-system, ui-sans-serif, system-ui, sans-serif;
+    font-family: Optimistic Display, -apple-system, ui-sans-serif, system-ui, sans-serif, "Apple Color Emoji";
+    /*font-family: 'Consolas', 'Menlo', 'DejaVu Sans Mono', 'Bitstream Vera Sans Mono', monospace;*/
 }
 
-/* || General Modifiers */
-
-/* search engine only */
-.--sr-only {
-    position: absolute;
-    border: 0;
-    padding: 0;
-    margin: 0;
-    height: 1px;
-    width: 1px;
-    overflow: hidden;
+/* || General Structures (Objects under the OOCSS methodology) */
+.page-heading {
+    font-size: 4em;
 }
 
-/* set container width */
-.--page-width {
-    padding-left: 5vw;
-    padding-right: 5vw;
+.section {
+    margin: 40px auto;
+    padding: 20px 10px;
+}
+.section-title {
+    font-size: 2em;
 }
 
-/* left arrow */
-.--left-arrow {
+.comment-quote {
     position: relative;
 }
-.--left-arrow::before {
-    content: "";
+.comment-quote:hover .comment {
+    display: block;
+    width: fit-content;
+    height: fit-content;
+    /*animation-play-state: running;*/
+}
+.comment {
+    display: none;
     position: absolute;
-    top: min(0px, calc((100% - 20px) / 2));
-    left: -10px;
-    translate: -100% 0;
+    bottom: 0;
+    right: 0;
+    translate: calc(100% - 100px) calc(100% - 10px);
     width: 0;
     height: 0;
-    border-right: 20px solid #000;
-    border-top: 20px solid transparent;
-    border-bottom: 20px solid transparent;
-}
-
-/* || General Objects */
-/* Section */
-.section {
-    padding-top: 80px;
-    padding-bottom: 80px;
-    background: #170312;
-    color: #fff;
-}
-.section__heading {
-    font-size: 2rem;
-    color: #F3F7F0;
-}
-/* label */
-.label {
-    padding: 5px 10px;
-    border-radius: 5px;
-    outline: 2px solid #000000;
-    outline-offset: 3px;
-    font-size: 0.3em;
-    background-color: #E6E6E9;
-    color: #313135;
-}
-.label-parent {
-    position: relative;
-}
-.label-parent > .label {
-    position: absolute;
-    top: 0;
-    right: 0;
-    translate: 100% -50%;
-}
-
-
-/* || Header */
-.page-header {
-    display: flex;
-    min-height: 60px;
-    padding-top: 10px;
-    padding-bottom: 10px;
-    align-items: center;
-    align-content: space-around;
-    background-color: #170312;
-    color: #fff;
-    font-weight: bold;
-}
-.page-header > * {
-    box-sizing: border-box;
-    max-height: 100%;
-}
-
-/* || Page Logo */
-.page-logo {
-    max-width: 20%;
-    padding-right: 5px;
-    border-bottom: .15em solid #fff;
-    outline: .15em solid #fff;
-    font-family: 'Consolas', 'Menlo', 'DejaVu Sans Mono', 'Bitstream Vera Sans Mono', monospace;
-    font-size: 1.5rem;
+    padding: .15em;
+    border-radius: .15em;
     overflow: hidden;
     text-overflow: ellipsis;
     text-wrap: nowrap;
+    text-align: center;
+    font-size: .3em;
+    animation: "rtl-appear" 2s ease-in-out 1 forwards;
+    transition: width 0.5s ease-in-out 0.5s;
+
+}
+.comment:hover {
+    overflow: initial;
+    text-wrap: initial;
+    width: auto;
+    height: auto;
 }
 
-/* || Main Navigation */
+@keyframes rtl-appear {
+    from {
+        width: 0;
+    }
+    to {
+        width: 50%;
+        animation-play-state: paused;
+    }
+}
+
+/* || Structures (Objects under the OOCSS methodology) (styled following the layout) */
+/* header */
+.page-header {
+    display: flex;
+    flex-direction: row;
+    align-content: center;
+    justify-content: left;
+    min-height: 40px;
+    padding: 20px 10px;
+    margin: 0 auto;
+}
+.page-header > * {
+    margin-right: 20px;
+    margin-left: 20px;
+}
+.page-header > *:last-child {
+    width: 100%;
+}
+
+.page-logo {
+    display: block;
+    width: fit-content;
+    height: fit-content;
+    padding: 5px 10px;
+    border-bottom: 2px solid #9999A1;
+    outline: 4px solid #9999A1;
+    text-wrap: nowrap;
+}
+.page-logo > h1 {
+    width: fit-content;
+    height: fit-content;
+}
+
 .page-nav {
-    min-width: 40%;
-    margin: 0 5%;
+    display: flex;
+    flex-direction: row;
+    align-content: center;
+    justify-content: space-between;
 }
 .page-nav > ul {
-    display: flex;
-    list-style-type: none;
-    align-content: center;
-    justify-content: space-evenly;
-    font-size: 1.1rem;
-    color: #fff;
+    list-style: none;
 }
 .page-nav li {
-    margin: 0 5px;
+    margin: 0 20px;
 }
 
-/* || Header Add-ons Menu */
-.header__add-ons-menu {
+.add-ons-menu {
     display: flex;
-    flex: 2;
+    flex-direction: row;
     align-content: center;
     justify-content: right;
 }
-.header__add-ons-menu > * {
-    box-sizing: border-box;
-    max-height: 100%;
+
+/* || General Skins (Skins under the OOCSS methodology) */
+.--page-width {
+    width: 85%;
 }
 
-/* || Main Section */
-.main-section {
-    background: linear-gradient(#170312, #93101D 50%, #B81425 70%, #93101D 80%, #170312),
-                linear-gradient(#170312, #201D1D);
-}
-.main-section__heading {
-    font-size: 5rem;
-}
-.main-section__heading__highlight-text {
-    color: transparent;
-    background: linear-gradient(#F3F7F0, #8C5E58);
-    background-clip: text;
+.--border-bottom-divider {
+    border-bottom: 2px solid #E6E6E9;
 }
 
-/* || Project Section */
-
-
-/*  || Media Queries */
-
-@media all and (min-width: 1470px) {
-    .page-header {
-        min-height: 60px;
-    }
-    .page-logo {
-        max-width: 20%;
-        font-size: 1.5rem;
-    }
-    .page-nav {
-        min-width: 40%;
-        margin: 0 5%;
-    }
-    .page-nav > ul {
-        font-size: 1.1rem;
-    }
+.--color-anti-flash-white {
+    color: #F4F4F6;
 }
+.--color-platinum {
+    color: #E5E5E5;
+}
+.--bg-taupe-grey {
+    background-color: #9999A1;
+}
+.--bg-gunmetal {
+    background-color: #242F40;
+}
+
+.--text-shadow-black {
+    text-shadow: 1px 1px 20px #000000;
+}
+
+.--text-shadow-child-no-inherit * {
+    text-shadow: none;
+}
+
+.--filter-drop-shadow-black-invert-ten-percent {
+    filter: drop-shadow(16px 16px 20px #000000) invert(10%);
+}
+
+.--flex-right {
+    justify-items: right;
+}
+
+
