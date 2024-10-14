@@ -1,16 +1,178 @@
+/* || General Style */
+a {
+    color: inherit;
+    text-decoration: none;
+}
+
+a:hover {
+    opacity: .75;
+}
+
 /* || Typography */
 body {
-    font-family: 'Consolas', 'Menlo', 'DejaVu Sans Mono', 'Bitstream Vera Sans Mono', monospace;
+    font-family: Optimistic Display, -apple-system, ui-sans-serif, system-ui, sans-serif;
 }
 
-/* || Header and Main Navigation */
+/* || General Modifiers */
+
+/* search engine only */
+.--sr-only {
+    position: absolute;
+    border: 0;
+    padding: 0;
+    margin: 0;
+    height: 1px;
+    width: 1px;
+    overflow: hidden;
+}
+
+/* set container width */
+.--page-width {
+    padding-left: 5vw;
+    padding-right: 5vw;
+}
+
+/* left arrow */
+.--left-arrow {
+    position: relative;
+}
+.--left-arrow::before {
+    content: "";
+    position: absolute;
+    top: min(0px, calc((100% - 20px) / 2));
+    left: -10px;
+    translate: -100% 0;
+    width: 0;
+    height: 0;
+    border-right: 20px solid #000;
+    border-top: 20px solid transparent;
+    border-bottom: 20px solid transparent;
+}
+
+/* || General Objects */
+/* Section */
+.section {
+    padding-top: 80px;
+    padding-bottom: 80px;
+    background: #170312;
+    color: #fff;
+}
+.section__heading {
+    font-size: 2rem;
+    color: #F3F7F0;
+}
+/* label */
+.label {
+    padding: 5px 10px;
+    border-radius: 5px;
+    outline: 2px solid #000000;
+    outline-offset: 3px;
+    font-size: 0.3em;
+    background-color: #E6E6E9;
+    color: #313135;
+}
+.label-parent {
+    position: relative;
+}
+.label-parent > .label {
+    position: absolute;
+    top: 0;
+    right: 0;
+    translate: 100% -50%;
+}
+
+
+/* || Header */
 .page-header {
-    padding: 10px 20px;
-    background-color: #6592CF;
-    color: #ffffff;
+    display: flex;
+    min-height: 60px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    align-items: center;
+    align-content: space-around;
+    background-color: #170312;
+    color: #fff;
     font-weight: bold;
 }
+.page-header > * {
+    box-sizing: border-box;
+    max-height: 100%;
+}
 
+/* || Page Logo */
+.page-logo {
+    max-width: 20%;
+    padding-right: 5px;
+    border-bottom: .15em solid #fff;
+    outline: .15em solid #fff;
+    font-family: 'Consolas', 'Menlo', 'DejaVu Sans Mono', 'Bitstream Vera Sans Mono', monospace;
+    font-size: 1.5rem;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    text-wrap: nowrap;
+}
+
+/* || Main Navigation */
 .page-nav {
+    min-width: 40%;
+    margin: 0 5%;
+}
+.page-nav > ul {
+    display: flex;
+    list-style-type: none;
+    align-content: center;
+    justify-content: space-evenly;
+    font-size: 1.1rem;
+    color: #fff;
+}
+.page-nav li {
+    margin: 0 5px;
+}
 
+/* || Header Add-ons Menu */
+.header__add-ons-menu {
+    display: flex;
+    flex: 2;
+    align-content: center;
+    justify-content: right;
+}
+.header__add-ons-menu > * {
+    box-sizing: border-box;
+    max-height: 100%;
+}
+
+/* || Main Section */
+.main-section {
+    background: linear-gradient(#170312, #93101D 50%, #B81425 70%, #93101D 80%, #170312),
+                linear-gradient(#170312, #201D1D);
+}
+.main-section__heading {
+    font-size: 5rem;
+}
+.main-section__heading__highlight-text {
+    color: transparent;
+    background: linear-gradient(#F3F7F0, #8C5E58);
+    background-clip: text;
+}
+
+/* || Project Section */
+
+
+/*  || Media Queries */
+
+@media all and (min-width: 1470px) {
+    .page-header {
+        min-height: 60px;
+    }
+    .page-logo {
+        max-width: 20%;
+        font-size: 1.5rem;
+    }
+    .page-nav {
+        min-width: 40%;
+        margin: 0 5%;
+    }
+    .page-nav > ul {
+        font-size: 1.1rem;
+    }
 }
