@@ -27,48 +27,33 @@ body {
     font-size: 2em;
 }
 
-.comment-quote {
-    position: relative;
+.marquee-container {
+    display: flex;
+    gap: 10em;
+    margin: 1em auto;
+    overflow: hidden;
+    user-select: none;
 }
-.comment-quote:hover .comment {
-    display: block;
-    width: fit-content;
-    height: fit-content;
-    /*animation-play-state: running;*/
+.marquee-content {
+    display: flex;
+    gap: 5em;
+    animation: "marquee" 10s linear 0s infinite running;
 }
-.comment {
-    display: none;
-    position: absolute;
-    bottom: 0;
-    right: 0;
-    translate: calc(100% - 100px) calc(100% - 10px);
-    width: 0;
-    height: 0;
-    padding: .15em;
-    border-radius: .15em;
+.marquee-item {
+    width: 15em;
+    height: 6em;
+    padding: 1em;
     overflow: hidden;
     text-overflow: ellipsis;
-    text-wrap: nowrap;
-    text-align: center;
-    font-size: .3em;
-    animation: "rtl-appear" 2s ease-in-out 1 forwards;
-    transition: width 0.5s ease-in-out 0.5s;
-
+    border-radius: .8em;
+    background: gray;
 }
-.comment:hover {
-    overflow: initial;
-    text-wrap: initial;
-    width: auto;
-    height: auto;
-}
-
-@keyframes rtl-appear {
-    from {
-        width: 0;
+@keyframes marquee {
+    0% {
+        transform: translateX(0);
     }
-    to {
-        width: 50%;
-        animation-play-state: paused;
+    100% {
+        transform: translateX(calc(-100% - 5em));
     }
 }
 
@@ -125,6 +110,15 @@ body {
     justify-content: right;
 }
 
+.comment {
+    display: inline-block;
+    font-size: 0.75em;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    padding: 5px;
+    border-radius: .25em;
+}
+
 /* || General Skins (Skins under the OOCSS methodology) */
 .--page-width {
     width: 85%;
@@ -132,6 +126,17 @@ body {
 
 .--border-bottom-divider {
     border-bottom: 2px solid #E6E6E9;
+}
+
+.--flex-direction-row {
+    flex-direction: row;
+}
+.--flex-align-content-center {
+    align-items: center;
+}
+
+.--flex-justify-content-space-evenly {
+    justify-content: space-evenly;
 }
 
 .--color-anti-flash-white {
@@ -149,10 +154,6 @@ body {
 
 .--text-shadow-black {
     text-shadow: 1px 1px 20px #000000;
-}
-
-.--text-shadow-child-no-inherit * {
-    text-shadow: none;
 }
 
 .--filter-drop-shadow-black-invert-ten-percent {
