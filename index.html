@@ -55,19 +55,7 @@
     <section class="section --page-width --border-bottom-divider">
         <h2 class="section-title">Projects</h2>
         <div class="marquee-container --flex-direction-row --flex-align-content-center">
-            <div class="marquee-content --flex-direction-row --flex-align-content-center --flex-justify-content-space-evenly">
-                <div class="marquee-item">item1</div>
-                <div class="marquee-item">item2</div>
-                <div class="marquee-item">item3</div>
-                <div class="marquee-item">item4</div>
-                <div class="marquee-item">item5</div>
-                <div class="marquee-item">item6</div>
-                <div class="marquee-item">item7</div>
-                <div class="marquee-item">item8</div>
-                <div class="marquee-item">item9</div>
-                <div class="marquee-item">item10</div>
-            </div>
-            <div aria-hidden="true" class="marquee-content --flex-direction-row --flex-align-content-center --flex-justify-content-space-evenly">
+            <div class="marquee-content --flex-direction-row --flex-align-content-center">
                 <div class="marquee-item">item1</div>
                 <div class="marquee-item">item2</div>
                 <div class="marquee-item">item3</div>
@@ -82,36 +70,48 @@
         </div>
     </section>
     <script>
-        document.querySelectorAll(".comment").forEach((item) => {
-            item.style.setProperty("display", "none");
-        });
-
-        document.querySelectorAll(".comment-quote-container").forEach((item) => {
-            item.addEventListener("mouseenter", (event) => {
-                // event.stopPropagation();
-                // event.preventDefault();
-                if (event.currentTarget.hasChildNodes()) {
-                    if (event.currentTarget.querySelector(".quote")) {
-                        event.currentTarget.querySelector(".quote").style.setProperty("display", "none");
-                    }
-                    if (event.currentTarget.querySelector(".comment")) {
-                        event.currentTarget.querySelector(".comment").style.removeProperty("display");
-                    }
-                }
+        document.addEventListener("DOMContentLoaded", () => {
+            // For comment and quote styles
+            document.querySelectorAll(".comment").forEach((item) => {
+                item.style.setProperty("display", "none");
             });
-            item.addEventListener("mouseleave", (event) => {
-                // event.stopPropagation();
-                // event.preventDefault();
-                if (event.currentTarget.hasChildNodes()) {
-                    if (event.currentTarget.querySelector(".quote")) {
-                        event.currentTarget.querySelector(".quote").style.removeProperty("display");
+
+            document.querySelectorAll(".comment-quote-container").forEach((item) => {
+                item.addEventListener("mouseenter", (event) => {
+                    event.stopPropagation();
+                    event.preventDefault();
+                    if (event.currentTarget.hasChildNodes()) {
+                        if (event.currentTarget.querySelector(".quote")) {
+                            event.currentTarget.querySelector(".quote").style.setProperty("display", "none");
+                        }
+                        if (event.currentTarget.querySelector(".comment")) {
+                            event.currentTarget.querySelector(".comment").style.removeProperty("display");
+                        }
                     }
-                    if (event.currentTarget.querySelector(".comment")) {
-                        event.currentTarget.querySelector(".comment").style.setProperty("display", "none");
+                });
+                item.addEventListener("mouseleave", (event) => {
+                    event.stopPropagation();
+                    event.preventDefault();
+                    if (event.currentTarget.hasChildNodes()) {
+                        if (event.currentTarget.querySelector(".quote")) {
+                            event.currentTarget.querySelector(".quote").style.removeProperty("display");
+                        }
+                        if (event.currentTarget.querySelector(".comment")) {
+                            event.currentTarget.querySelector(".comment").style.setProperty("display", "none");
+                        }
                     }
-                }
+                })
+            });
+
+            // For marquee styles
+            document.querySelectorAll(".marquee-content").forEach((item) => {
+                item.querySelectorAll(".marquee-item").forEach((marqueeItem) => {
+                    let newMarqueeItem = marqueeItem.cloneNode(true);
+                    newMarqueeItem.setAttribute("aria-hidden", "true");
+                    item.appendChild(newMarqueeItem);
+                })
             })
-        });
+        })
     </script>
 </body>
 </html>

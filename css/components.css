@@ -27,33 +27,50 @@ body {
     font-size: 2em;
 }
 
+.comment {
+    display: inline-block;
+    font-size: 0.75em;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    padding: 5px;
+    border-radius: .25em;
+}
+
 .marquee-container {
-    display: flex;
-    gap: 10em;
     margin: 1em auto;
     overflow: hidden;
     user-select: none;
 }
 .marquee-content {
     display: flex;
-    gap: 5em;
+    width: max-content;
+    justify-content: space-between;
     animation: "marquee" 10s linear 0s infinite running;
 }
+.marquee-container:hover .marquee-content {
+    animation-play-state: paused;
+}
 .marquee-item {
-    width: 15em;
-    height: 6em;
+    flex-shrink: 0;
+    width: 10em;
+    height: 10em;
     padding: 1em;
+    margin: 1em;
     overflow: hidden;
     text-overflow: ellipsis;
     border-radius: .8em;
-    background: gray;
+    background-color: #F2F2F3;
+}
+.marquee-item:hover {
+    box-shadow: 0 0 10px #030712;
+
 }
 @keyframes marquee {
     0% {
-        transform: translateX(0);
+        transform: translateX(0%);
     }
     100% {
-        transform: translateX(calc(-100% - 5em));
+        transform: translateX(-50%);
     }
 }
 
@@ -108,15 +125,6 @@ body {
     flex-direction: row;
     align-content: center;
     justify-content: right;
-}
-
-.comment {
-    display: inline-block;
-    font-size: 0.75em;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    padding: 5px;
-    border-radius: .25em;
 }
 
 /* || General Skins (Skins under the OOCSS methodology) */
