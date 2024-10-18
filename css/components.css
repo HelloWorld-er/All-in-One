@@ -45,7 +45,7 @@ body {
     display: flex;
     width: max-content;
     justify-content: space-between;
-    animation: "marquee" 10s linear 0s infinite running;
+    animation: marquee 10s linear 0s infinite running;
 }
 .marquee-container:hover .marquee-content {
     animation-play-state: paused;
