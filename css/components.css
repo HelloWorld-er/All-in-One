@@ -54,7 +54,7 @@ body {
         display: flex;
         width: max-content;
         justify-content: space-between;
-        animation: marquee 10s linear 0s infinite running;
+        animation: marquee 30s linear 0s infinite running;
     }
     .marquee-container:hover .marquee-content {
         animation-play-state: paused;
@@ -163,7 +163,7 @@ body {
 }
 
 .--text-shadow-black {
-    text-shadow: 1px 1px 20px #000000;
+    text-shadow: 1px 1px 40px #000000;
 }
 
 .--filter-drop-shadow-black-invert-ten-percent {
